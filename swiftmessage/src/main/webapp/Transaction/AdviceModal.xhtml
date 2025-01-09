@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+    <p:dialog header="Print Receipt " widgetVar="dlgPrintReceipt" minHeight="80">
+        <h:form id="myForm">
+
+            <p:panel id="pnlPrintable" style="margin-left: 20%; border: 0ch;">
+                <div class="sidbar-brand-bordder">
+                    <div class="sidebar-brand-icon">
+
+                        <p:graphicImage url="/../#{request.contextPath}images/dbLogo.jpg" height="100" />
+                        <h1>DASHEN BANK S.C</h1>
+                        <h>Always One Step Ahead!</h>
+                        <h5>Swift Payment</h5>
+                        <h4>CREDIT ADVICE</h4>
+                        <br></br><br></br><br></br>
+
+
+                    </div>
+                </div>
+
+
+
+                <p:outputLabel value="RECEIVER BRANCH: " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.dashenBranch}" /><br></br>
+                <p:outputLabel value="CUSTOMER ID:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.customerType}" /><br></br>
+                <p:outputLabel value="ACCOUNT:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.accountNumber}" /> <br></br>
+
+
+                <br></br>
+                <p:outputLabel value="OUR REFERENCE NO:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel id="accountNumber" value="#{adviceForTransaction.items.transactionNumber}" />
+                <br></br>
+                <p:outputLabel value="USER REFERENCE NO:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.reference}" /><br></br>
+                <p:outputLabel value="VALUE DATE:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel id="nameee" value="#{adviceForTransaction.items.message.valueDate}" />
+                <br></br>
+                <p:outputLabel value="EXCHANGE RATE:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.rate}" /><br></br>
+
+                <p:outputLabel value="CURRENCY:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.currencyId}" /><br></br>
+
+                <p:outputLabel value="AMOUNT:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.fcyAmount}" /><br></br>
+
+                <p:outputLabel value="AMT LCY EQUV:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="" /><br></br>
+
+                <p:outputLabel value="PURPOSE OF PAYMENT:  " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:outputLabel value="#{adviceForTransaction.items.message.paymentPurpose}" /><br></br>
+
+                <h4>WE HAVE EXCUTED THE FOLLOWING TRANSACTION ON YOUR BEHALF</h4>
+
+            </p:panel>
+            <div class="row ">
+                <div class="col-2">
+                    <div class="form-group">
+                        <div class="col-12" align="right">
+                            <p:commandButton value="Print" type="button" icon="pi pi-print"
+                                style="display:block;margin-bottom: 20px">
+                                <p:printer target="pnlPrintable" />
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+
+</html>

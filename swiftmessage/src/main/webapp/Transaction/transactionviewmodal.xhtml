@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+    <p:dialog id="messageviewDlg" width="50%" widgetVar="messageviewDialog" modal="true" closable="true"
+        appendTo="@(body)" header="View Message">
+
+        <h:form id="transactionviewform" style="padding:20px;">
+            <div class="container-fluid">
+
+                <p:tabView id="tabViewMVS">
+                    <p:tab title="Transaction" id="RESPONSE">
+                        <p:card style="padding :5px;margin-bottom: 0em">
+
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="reference">Message Reference
+                                                </label><br />
+                                                <p:outputLabel id="reference"
+                                                    value="#{swiftTransactionController.selected.message.reference}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="countryOfOrigin">Transaction number
+                                                </label><br />
+                                                <p:outputLabel id="countryOfOrigin"
+                                                    value="#{swiftTransactionController.selected.transactionNumber}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="senderBank">Maker
+                                                </label><br />
+                                                <p:outputLabel id="senderBank"
+                                                    value="#{swiftTransactionController.selected.createdBy}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                    <div class="row">
+
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Total Amount
+                                                </label><br />
+                                                <p:outputLabel id="correbank"
+                                                    value="#{swiftTransactionController.selected.message.fcyAmount}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Total Amount Currency
+                                                </label><br />
+                                                <p:outputLabel id="ordering"
+                                                    value="#{swiftTransactionController.selected.message.currencyId}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="criteria1">Value Date</label>
+                                                <p:outputLabel id="criteria1"
+                                                    value="#{swiftTransactionController.selected.message.valueDate}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="buyrate">Buying Rate</label>
+                                            <p:outputLabel id="buyrate"
+                                                value="#{swiftTransactionController.selected.message.rate}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="usedrate">Used Rate</label>
+                                            <p:outputLabel id="usedrate"
+                                                value="#{swiftTransactionController.selected.fcyRate}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="sellrate">Final FCY Amount</label>
+                                            <p:outputLabel id="sellrate"
+                                                value="#{swiftTransactionController.selected.fcyAmount}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" >
+                                                <f:convertNumber type="currency" currencySymbol="$" />
+                                            </p:outputLabel>
+
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="finalamount">Final Birr Amount</label>
+                                            <p:outputLabel id="finalamount"
+                                                value="#{swiftTransactionController.selected.birrAmount}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" >
+                                                <f:convertNumber type="currency" currencySymbol="$" />
+                                            </p:outputLabel>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="lcyamount">Amount in LCY</label>
+                                            <p:outputLabel id="lcyamount"
+                                                value="#{swiftTransactionController.lcyAmount}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" >
+                                                <f:convertNumber type="currency" currencySymbol="$" />
+                                            </p:outputLabel>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="txnerror">Transaction Error</label>
+                                            <p:outputLabel id="txnerror"
+                                                value="#{swiftTransactionController.selected.deletedBy}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lebelClass" for="Correspondent">Correspondent Bank</label>
+                                            <p:outputLabel id="Correspondent"
+                                                value="#{swiftTransactionController.selected.message.correspondentBank}"
+                                                style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+                    <p:tab title="Account" id="RESPONSE1">
+                        <p:card style="padding :5px;margin-bottom: 0em">
+
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="acccategory">Message Account Number
+                                                </label><br />
+                                                <p:outputLabel id="acccategory"
+                                                    value="#{swiftTransactionController.originalAccNo}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="acctype">Message Account Name
+                                                </label><br />
+                                                <p:outputLabel id="acctype"
+                                                    value="#{swiftTransactionController.orginalAccName}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="beneficiaryName">Message Account Currency
+                                                </label><br />
+                                                <p:outputLabel id="beneficiaryName"
+                                                    value="#{swiftTransactionController.orginalAccCurrency}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="oacccategory">Other Account Number
+                                                </label><br />
+                                                <p:outputLabel id="oacccategory"
+                                                    value="#{swiftTransactionController.otherAccNo}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="oacctype">Other Account Name
+                                                </label><br />
+                                                <p:outputLabel id="oacctype"
+                                                    value="#{swiftTransactionController.otherAccName}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="obeneficiaryName">Other Account Currency
+                                                </label><br />
+                                                <p:outputLabel id="obeneficiaryName"
+                                                    value="#{swiftTransactionController.otherAccCurrency}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="customercat">Status
+                                                </label><br />
+                                                <p:outputLabel id="customercat"
+                                                    value="#{swiftTransactionController.selected.status}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+
+                    <p:tab title="Retantion" id="ARTFACT">
+                        <p:card style="padding :0px;margin-bottom: 0em">
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="retabirr">RETA_BIRR_ACCOUNT
+                                                </label><br />
+                                                <p:outputLabel id="retabirr"
+                                                    value="#{swiftTransactionController.selected.retaBirrAccount}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="retaaccname">RETA_BIRR_ACCOUNT_NAME
+                                                </label><br />
+                                                <p:outputLabel id="retaaccname"
+                                                    value="#{swiftTransactionController.selected.retaBirrAccountName}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+
+
+
+
+                </p:tabView>
+
+
+
+
+            </div>
+
+        </h:form>
+    </p:dialog>
+
+</ui:composition>
+
+</html>

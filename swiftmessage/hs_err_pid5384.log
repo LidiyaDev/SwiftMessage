@@ -1,0 +1,223 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 805306368 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3557), pid=5384, tid=43308
+#
+# JRE version:  (17.0.6+10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.6+10, mixed mode, emulated-client, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Core dump will be written. Default location: c:\Users\pos_sduser\Desktop\projects\lidu\new swift\15-12-2023\swiftmessage\hs_err_pid5384.mdmp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:+HeapDumpOnOutOfMemoryError -Xmx1024m -Dsts.lsp.client=vscode -Dsts.log.file=/dev/null -XX:TieredStopAtLevel=1 -Xlog:jni+resolve=off -Dspring.config.location=file:c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\classes\application.properties org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+
+Host: Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz, 16 cores, 47G,  Windows Server 2019 , 64 bit Build 17763 (10.0.17763.4377)
+Time: Sat Jan  6 01:32:31 2024 E. Africa Standard Time elapsed time: 0.251424 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001cef2c68900):  JavaThread "Unknown thread" [_thread_in_vm, id=43308, stack(0x0000003eb5c00000,0x0000003eb5d00000)]
+
+Stack: [0x0000003eb5c00000,0x0000003eb5d00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x67741a]
+V  [jvm.dll+0x834434]
+V  [jvm.dll+0x835bde]
+V  [jvm.dll+0x836243]
+V  [jvm.dll+0x2457b5]
+V  [jvm.dll+0x674329]
+V  [jvm.dll+0x6689da]
+V  [jvm.dll+0x30489b]
+V  [jvm.dll+0x30bd96]
+V  [jvm.dll+0x35b57e]
+V  [jvm.dll+0x35b7af]
+V  [jvm.dll+0x2db778]
+V  [jvm.dll+0x2dc6e4]
+V  [jvm.dll+0x806131]
+V  [jvm.dll+0x369331]
+V  [jvm.dll+0x7e56ac]
+V  [jvm.dll+0x3eb35f]
+V  [jvm.dll+0x3ecea1]
+C  [jli.dll+0x5267]
+C  [ucrtbase.dll+0x2268a]
+C  [KERNEL32.DLL+0x17ac4]
+C  [ntdll.dll+0x5a351]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffcef955fd8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000001cef2ca6ca0 GCTaskThread "GC Thread#0" [stack: 0x0000003eb5d00000,0x0000003eb5e00000] [id=23656]
+  0x000001cef2cafbe0 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000003eb5e00000,0x0000003eb5f00000] [id=14440]
+  0x000001cef2cb11b0 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000003eb5f00000,0x0000003eb6000000] [id=16468]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffcef12c1e7]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001cef2a6ae90] Heap_lock - owner thread: 0x000001cef2c68900
+
+Heap address: 0x00000000c0000000, size: 1024 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000c0000000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffcef5106f9]
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.153 Loaded shared library c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff682a80000 - 0x00007ff682a8e000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\java.exe
+0x00007ffd26dd0000 - 0x00007ffd26fbf000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffd250a0000 - 0x00007ffd25153000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffd23af0000 - 0x00007ffd23d8d000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffd22e30000 - 0x00007ffd22f2a000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffcf6490000 - 0x00007ffcf64a7000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\jli.dll
+0x00007ffd00210000 - 0x00007ffd00229000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\VCRUNTIME140.dll
+0x00007ffd24640000 - 0x00007ffd247d8000 	C:\Windows\System32\USER32.dll
+0x00007ffd0e7c0000 - 0x00007ffd0ea39000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.4645_none_de717694534b1c4f\COMCTL32.dll
+0x00007ffd23060000 - 0x00007ffd23080000 	C:\Windows\System32\win32u.dll
+0x00007ffd247f0000 - 0x00007ffd24819000 	C:\Windows\System32\GDI32.dll
+0x00007ffd249d0000 - 0x00007ffd24a6e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffd24ca0000 - 0x00007ffd24fcb000 	C:\Windows\System32\combase.dll
+0x00007ffd23e20000 - 0x00007ffd23fc6000 	C:\Windows\System32\gdi32full.dll
+0x00007ffd26b80000 - 0x00007ffd26c9e000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffd23d90000 - 0x00007ffd23e12000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffd22fc0000 - 0x00007ffd23060000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffd255f0000 - 0x00007ffd2561e000 	C:\Windows\System32\IMM32.DLL
+0x00007ffd00200000 - 0x00007ffd0020c000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\vcruntime140_1.dll
+0x00007ffcf0030000 - 0x00007ffcf00c1000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\msvcp140.dll
+0x00007ffceee40000 - 0x00007ffcefa87000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\server\jvm.dll
+0x00007ffd25440000 - 0x00007ffd254e7000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffd24a70000 - 0x00007ffd24b0f000 	C:\Windows\System32\sechost.dll
+0x00007ffd184c0000 - 0x00007ffd184ca000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffd20e80000 - 0x00007ffd20ea4000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffd15020000 - 0x00007ffd15029000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffd20e50000 - 0x00007ffd20e7d000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007ffd24fd0000 - 0x00007ffd2503d000 	C:\Windows\System32\WS2_32.dll
+0x00007ffd238a0000 - 0x00007ffd238ea000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffd22dc0000 - 0x00007ffd22dd1000 	C:\Windows\System32\kernel.appcore.dll
+0x00007ffcf64f0000 - 0x00007ffcf64fa000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\jimage.dll
+0x00007ffd142e0000 - 0x00007ffd144cd000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffd14900000 - 0x00007ffd1492a000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffcefdf0000 - 0x00007ffcefe15000 	c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.4645_none_de717694534b1c4f;c:\Users\pos_sduser\.vscode\extensions\redhat.java-1.16.0-win32-x64\jre\17.0.6-win32-x86_64\bin\server
+
+VM Arguments:
+jvm_args: -XX:+HeapDumpOnOutOfMemoryError -Xmx1024m -Dsts.lsp.client=vscode -Dsts.log.file=/dev/null -XX:TieredStopAtLevel=1 -Xlog:jni+resolve=off -Dspring.config.location=file:c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\classes\application.properties 
+java_command: org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+java_class_path (initial): c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\classes;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\annotations-24.0.1.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\ant-1.10.13.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\ant-launcher-1.10.13.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\antlr-runtime-3.5.3.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\antlr4-4.11.1.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\antlr4-runtime-4.11.1.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\asm-9.4.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\asm-analysis-9.4.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\asm-tree-9.4.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\asm-util-9.4.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\caffeine-3.1.2.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\checker-qual-3.12.0.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\classgraph-4.8.149.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\commons-codec-1.15.jar;c:\Users\pos_sduser\.vscode\extensions\vmware.vscode-spring-boot-1.45.0\language-server\BOOT-INF\lib\commons-compress-1.22.jar;c:\Users\pos_sduser\.vscode\extension
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 13                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+     bool HeapDumpOnOutOfMemoryError               = true                                   {manageable} {command line}
+   size_t InitialHeapSize                          = 805306368                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1073741824                                {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+     bool ProfileInterpreter                       = false                                  {pd product} {command line}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 1073741824                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning,jni+resolve=off uptime,level,tags (reconfigured)
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-11.0.17
+PATH=C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\jdk-11.0.17\bin;C:\apache-maven-3.8.6\bin;C:\apache-maven-3.8.6\bin;C:\Users\pos_sduser\AppData\Local\Microsoft\WindowsApps;C:\Users\pos_sduser\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Java\jdk-11.0.17\bin;C:\apache-maven-3.8.6\bin;
+USERNAME=pos_sduser
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 85 Stepping 7, GenuineIntel
+TMP=C:\Users\POS_SD~1\AppData\Local\Temp\2
+TEMP=C:\Users\POS_SD~1\AppData\Local\Temp\2
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows Server 2019 , 64 bit Build 17763 (10.0.17763.4377)
+OS uptime: 0 days 16:02 hours
+VMWare virtualization detected
+
+CPU: total 16 (initial active 16) (2 cores per cpu, 1 threads per core) family 6 model 85 stepping 7 microcode 0x5002f00, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, rtm, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, fma, vzeroupper, clflush, clflushopt, clwb, hv
+
+Memory: 4k page, system-wide physical 49150M (1223M free)
+TotalPageFile size 66993M (AvailPageFile size 675M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 65M, peak: 833M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.6+10) for windows-amd64 JRE (17.0.6+10), built on Jan 18 2023 10:08:59 by "temurin" with MS VC++ 16.7 (VS2019)
+
+END.

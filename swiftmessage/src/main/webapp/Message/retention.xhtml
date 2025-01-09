@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="newProfile">
+                <div class="container-fluid">
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                        </p:messages>
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                                <h3 class="h5 mb-0 text-gray-800">Transfer Information</h3>
+
+                            </div>
+                        </div>
+                        <div class="col-2" align="right">
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row" rendered="#{messageController.viewrnd}">
+                        <div class="container">
+                            <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+
+                                <h5 class="h6">Retention Account Information</h5>
+                                <hr />
+
+                                <h:panelGroup id="fcyp" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="fcyacc">Messagae Account Number</label><br />
+                                                <p:inputText id="fcyacc" value="#{messageController.accountNumber}"
+                                                    title="">
+                                                    
+                                                </p:inputText>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="fcyname">Message Customer Name</label><br />
+                                                <p:inputText id="fcyname" value="#{messageController.AC_DESC}"
+                                                    title="">
+                                                    
+                                                </p:inputText>
+                                                    
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="fcycc">Message Currency</label><br />
+                                                <p:inputText id="fcycc" value="#{messageController.CCY}" title="" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+                                <h:panelGroup id="etbp" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="etbacc">Account Number</label><br />
+
+                                                <p:selectOneMenu id="etbacc"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{retentionTransactionController.etbaccount}">
+                                                        <f:selectItem itemLable="Select One Account" itemValue=""/>
+                                                        <f:selectItems value="#{retentionTransactionController.getAccountlist(messageController.AC_DESC)}"
+                                                          var="item" itemLabel="#{item.CUST_AC_NO},#{item.CCY},#{item.AC_DESC} " itemValue="#{item.CUST_AC_NO}" />
+                                                          <p:ajax event="change" update="etbname etbccy"
+                                                          listener="#{retentionTransactionController.searchAcc()}" />
+
+                                                    </p:selectOneMenu>
+                                                
+                                                
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="etbname">Customer Name</label><br />
+                                                <p:inputText id="etbname" value="#{retentionTransactionController.AC_DESC}"
+                                                    title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label for="etbccy"> Customer Currency</label><br />
+                                                <p:inputText id="etbccy" value="#{retentionTransactionController.ACCY}"
+                                                    title="" />
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </h:panelGroup>
+                                <h:panelGroup id="infop" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="valuedate">Value Date
+                                                </label><br />
+                                                <p:inputText id="valuedate" value="#{messageController.VALUE_DATE}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="buying">Buying Exchange Rate
+                                                </label><br />
+                                                <p:inputText id="buying" value="#{messageController.valueRate}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        
+                                    </div>
+                                </h:panelGroup>
+                            </p:card>
+
+
+                            <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+                                <h5 class="h6">Amount Information</h5>
+                                <hr />
+                                <h:panelGroup id="amountp" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="fcypercent">FCY %
+                                                    </label>
+                                                    <p:inputText id="fcypercent" value="#{retentionTransactionController.fcyRate}"
+                                                        title="" >
+                                                    <p:ajax event="keyup" listener="#{retentionTransactionController.calculateAmount()}" update="fcyamount etbamount" />
+                                                    </p:inputText>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="messamount">Message Amount
+                                                </label><br />
+                                                <p:inputText id="messamount" value="#{messageController.AMOUNT}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="messamountccy">Message Amount Currency
+                                                </label><br />
+                                                <p:inputText id="messamountccy" value="#{messageController.CCY}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="fcyamount">Final FCY Amount
+                                                </label><br />
+                                                <p:inputText id="fcyamount" value="#{retentionTransactionController.finalFcy}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="etbamount">Final ETB Amount
+                                                </label><br />
+                                                <p:inputText id="etbamount" value="#{retentionTransactionController.finaletb}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </h:panelGroup>
+                            </p:card>
+
+                            <div class="row">
+                                <div class="col-4 px-md-9">
+                                    <div class="form-group">
+
+                                        <p:commandButton value="Pay" ajax="true" icon="pi pi-save"
+                                            styleClass=" ui-button-info"
+                                            style="height:40px !important; width: 100px !important;"
+                                            action="#{retentionTransactionController.saveMeesage(messageController.tmpSavedData)}" update="newProfile" />
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+            </h:form>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

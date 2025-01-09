@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<style>
+    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+        text-align: center;
+    }
+
+    .customPanelGrid .ui-panelgrid-content {
+        align-items: center;
+    }
+</style>
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="homeForm">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">General Report</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 0em ;margin-top:0px;padding:0; padding-top:0px">
+                            <div class="contai">
+
+                                <div class="col-10 px-md-12">
+                                    <h:panelGroup id="reportByGrd">
+                                        <p:panelGrid columns="2" style="margin-left: 150px">
+                                            <p:outputLabel value="Report By" for="reportBy" style="float:right" />
+                                            <p:selectOneRadio id="reportBy" value="#{generalReportController.reportBy}">
+                                                <f:selectItem itemLabel="All" itemValue="All" />
+                                                <f:selectItem itemLabel="Branch" itemValue="Branch" />
+                                                <f:selectItem itemLabel="Customer Category"
+                                                    itemValue="Customer Category" />
+                                                <f:selectItem itemLabel="Account Class" itemValue="Account Class" />
+                                                <f:selectItem itemLabel="Date" itemValue="Date" />
+
+                                                <p:ajax event="change"
+                                                    listener="#{generalReportController.requestByreportBy()}"
+                                                    update="accountGrd categoryGrd branchGrd dateGrd dataGrd homeForm" />
+                                            </p:selectOneRadio>
+
+                                        </p:panelGrid>
+                                    </h:panelGroup>
+
+                                    <br /><br />
+
+
+
+
+                                    <h:panelGroup id="accountGrd" rendered="#{generalReportController.accountrnd}">
+
+                                        <div class="row">
+                                            <div class="col-3 px-md-3">
+                                                <div class="form-group">
+                                                    <label for="mstatus" style="width: 50%;">Account Class
+                                                    </label>
+
+
+                                                    <p:selectOneMenu id="mstatus"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{generalReportController.account}">
+                                                        <f:selectItem itemLabel="All" itemValue="All" />
+
+                                                        <f:selectItem itemLabel="CURRNT" itemValue="CURRNT" />
+
+                                                        <f:selectItem itemLabel="EXPTOD" itemValue="EXPTOD" />
+
+                                                        <f:selectItem itemLabel="WESAVI" itemValue="WESAVI" />
+
+                                                        <f:selectItem itemLabel="WASFCY" itemValue="WASFCY" />
+
+                                                        <f:selectItem itemLabel="MUSAVD" itemValue="MUSAVD" />
+
+                                                        <f:selectItem itemLabel="RETB" itemValue="RETB" />
+
+
+                                                        <f:selectItem itemLabel="MUSAVH" itemValue="MUSAVH" />
+
+                                                        <f:selectItem itemLabel="RESA" itemValue="RESA" />
+
+                                                        <f:selectItem itemLabel="NRFCYF" itemValue="NRFCYF" />
+
+
+                                                        <f:selectItem itemLabel="SAVING" itemValue="SAVING" />
+
+                                                        <f:selectItem itemLabel="WALKIN" itemValue="WALKIN" />
+
+                                                        <f:selectItem itemLabel="HYBRID" itemValue="HYBRID" />
+                                                        <p:ajax event="change"
+                                                            listener="#{generalReportController.reportByAccount}"
+                                                            update=":homeForm" />
+
+                                                    </p:selectOneMenu>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </h:panelGroup>
+
+
+                                    <h:panelGroup id="categoryGrd" rendered="#{generalReportController.categorrnd}">
+                                        <div class="row">
+                                            <div class="col-3 px-md-4">
+                                                <div class="form-group">
+                                                    <label for="senderBank1">Customer Category
+                                                    </label><br />
+                                                    <p:selectOneMenu id="cate"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{generalReportController.category}">
+                                                        <f:selectItem itemLabel="All" itemValue="All" />
+
+                                                        <f:selectItem itemLabel="MICROENT" itemValue="MICROENT" />
+
+                                                        <f:selectItem itemLabel="INDIVIDUAL" itemValue="INDIVIDUAL" />
+
+                                                        <f:selectItem itemLabel="PLC" itemValue="PLC" />
+
+                                                        <f:selectItem itemLabel="FORCOM" itemValue="FORCOM" />
+
+                                                        <f:selectItem itemLabel="EMBAS" itemValue="EMBAS" />
+
+                                                        <f:selectItem itemLabel="GOVT" itemValue="GOVT" />
+
+
+                                                        <f:selectItem itemLabel="PREMIUM" itemValue="PREMIUM" />
+
+                                                        <f:selectItem itemLabel="JOINVENT" itemValue="JOINVENT" />
+
+                                                        <f:selectItem itemLabel="VIP" itemValue="VIP" />
+
+
+                                                        <f:selectItem itemLabel="ASSOC" itemValue="ASSOC" />
+
+                                                        <f:selectItem itemLabel="SHARCOM" itemValue="SHARCOM" />
+
+                                                        <f:selectItem itemLabel="DIASPORA" itemValue="DIASPORA" />
+
+                                                        <p:ajax event="change"
+                                                            listener="#{generalReportController.reportByCategory}"
+                                                            update="dataGrd homeForm" />
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                    <h:panelGroup id="branchGrd" rendered="#{generalReportController.branchrnd}">
+                                        <div class="row">
+
+                                            <div class="col-3 px-md-4">
+                                                <div class="form-group">
+                                                    <label>Branch
+                                                    </label><br />
+                                                    <p:selectOneMenu id="branch"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{generalReportController.branchCode}" filter="true" filterMatchMode="contains">
+                                                        <f:selectItem itemLabel="Select Branch" itemValue="" />
+                                                        <f:selectItems value="#{reportController.branchList}" var="item"
+                                                            itemLabel="#{item.BRANCH_NAME}"
+                                                            itemValue="#{item.BRANCH_CODE}" />
+
+                                                        <p:ajax event="change"
+                                                            listener="#{generalReportController.reportByBranch}"
+                                                            update="dataGrd homeForm" />
+                                                    </p:selectOneMenu>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                    <h:panelGroup id="dateGrd" rendered="#{generalReportController.daternd}">
+                                        <div class="row">
+                                            <div class="field col-2 md:col-4" align="center">
+                                                <div class="form-group">
+                                                    <label>Start Date
+                                                    </label><br />
+                                                    <p:calendar id="month" value="#{generalReportController.from}"
+                                                        pattern="dd-MMM-yyyy">
+                                                        <p:ajax event="dateSelect" update="dataGrd" />
+
+                                                    </p:calendar>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="field col-2 md:col-4" align="center">
+                                                <div class="form-group">
+                                                    <label>End Date
+                                                    </label><br />
+                                                    <p:calendar id="to" value="#{generalReportController.to}"
+                                                        pattern="dd-MMM-yyyy">
+                                                        <p:ajax event="dateSelect" update="dataGrd homeForm" />
+
+                                                    </p:calendar>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+
+                                </div>
+
+
+
+                                <div class="row" align="center">
+                                    <div class="col-10 px-md-4">
+                                        <a href="/Report/general" align="center"
+                                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                                class="fas fa-download fa-sm text-white-50"></i> Search</a>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <h:panelGroup id="dataGrd">
+                                    <p:panelGrid columns="1">
+                                        <p:dataTable id="datalist2" var="item"
+                                            value="#{generalReportController.nretaitems}" paginator="true"
+                                            selection="#{reportController.mulselect}" rowKey="#{item.id}" rows="10"
+                                            filteredValue="#{generalReportController.nretaitems}" stripedRows="true"
+                                            widgetVar="shareholderTable" rowsPerPageTemplate="10,20,30,40,50,100"
+                                            paginatorPosition="bottom" scrollable="true">
+                                            <f:facet name="header">
+
+
+
+                                                <div class="p-d-flex p-ai-center p-jc-between" align="right">
+
+                                                    <p:inputText id="globalFilter"
+                                                        onkeyup="PF('shareholderTable').filter()"
+                                                        style="width:50% !important; position: relative !important; display: inline-table "
+                                                        placeholder="Enter keyword" />
+                                                    <span class="ui-icon  ui-icon-search"
+                                                        style=" font-size: 18px !important;position: relative !important; display: inline-table "></span>
+                                                </div>
+
+                                                <p:graphicImage url="/images/dblogo.png" height="50" width="50" />
+                                                <h3 style="text-align: center; margin-top: 10px;">DASHEN BANK SH.CO</h3>
+                                                <p style="text-align: center;">IBD</p>
+                                                <p style="text-align: center;"> Report</p>
+
+                                            </f:facet>
+
+                                            <p:columnGroup type="header">
+                                                <p:row>
+                                                    <p:column headerText="Branch Name" />
+                                                    <p:column headerText="Product" />
+                                                    <p:column headerText="Transaction Date" />
+                                                    <p:column headerText="Message Reference" />
+                                                    <p:column headerText="Transaction Reference" />
+                                                    <p:column headerText="Benefeciary Customer" />
+                                                    <p:column headerText="Customer Category" />
+                                                    <p:column headerText="Ordering Customer" />
+
+                                                    <p:column headerText="Payment Purpose" />
+                                                    <p:column headerText="Account" />
+                                                    <p:column headerText="Account Class" />
+                                                    <p:column headerText="Account Curency" />
+
+                                                    <p:column headerText="Fcy Amount" />
+                                                    <p:column headerText="Transfered FCY Amount" />
+                                                    <p:column headerText="Transfered Birr Amount" />
+
+                                                    <p:column headerText="Ex. Rate" />
+                                                    <p:column headerText="Country" />
+                                                </p:row>
+
+                                            </p:columnGroup>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message}"
+                                                sortBy="#{item.message}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Branch Name" />
+                                                </f:facet>
+                                                <h:outputText value="#{item.message.dashenBranch}" />
+
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message}"
+                                                sortBy="#{item.message}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Product" />
+                                                </f:facet>
+                                                <h:outputText value="FINT" />
+
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message}"
+                                                sortBy="#{item.message}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Transaction Date" />
+                                                </f:facet>
+                                                <h:outputText value="#{item.message.regDate}" />
+
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message}"
+                                                sortBy="#{item.message}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Message Reference" />
+                                                </f:facet>
+                                                <h:outputText value="#{item.message.bankReference}" />
+
+
+
+                                            </p:column>
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.transactionNumber}"
+                                                sortBy="#{item.transactionNumber}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Transaction Reference" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.transactionNumber}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.beneficiary}"
+                                                sortBy="#{item.message.beneficiary}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Benefeciary Customer" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.beneficiary}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message}"
+                                                sortBy="#{item.message}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Customer Category" />
+                                                </f:facet>
+                                                <h:outputText value="INDIVIDUAL" />
+
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Ordering Customer" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.orderingCustomer}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Payment Purpose" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.paymentPurpose}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Account" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.accountNumber}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Account Class" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.accountType}" />
+
+
+                                            </p:column>
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Account Curency" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.accountNumberCurrency}" />
+
+
+                                            </p:column>
+
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                                sortBy="#{item.message.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Fcy Amount" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.fcyAmount}" />
+
+
+                                            </p:column>
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.fcyAmount}"
+                                                sortBy="#{item.fcyAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Transfered FCY Amount" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.fcyAmount}" />
+
+
+                                            </p:column>
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.birrAmount}"
+                                                sortBy="#{item.birrAmount}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Transfered Birr Amount" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.birrAmount}" />
+
+
+                                            </p:column>
+
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.status}"
+                                                sortBy="#{item.status}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Ex. Rate" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.rate}" />
+
+
+                                            </p:column>
+
+                                            <p:column filterMatchMode="contains" filterBy="#{item.status}"
+                                                sortBy="#{item.status}">
+                                                <f:facet name="header">
+                                                    <h:outputText value="Country" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.countryOfOrigin}" />
+
+
+                                            </p:column>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </p:dataTable>
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+
+
+
+
+
+
+                            </div>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

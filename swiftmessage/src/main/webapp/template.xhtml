@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>
+        <ui:insert name="title">Dashen Bank : SWIFT v1.0</ui:insert>
+    </title>
+    <h:outputScript library="js" name="jsfcrud.js" />
+
+
+
+
+
+    <h:outputStylesheet library="css" name="sb-admin-2.css" />
+
+    <h:outputStylesheet library="css" name="all.css" />
+    <h:outputStylesheet library="css" name="font-awesome.css" />
+    <h:outputStylesheet library="css" name="jsfcrud.css" />
+
+
+
+
+
+    <h:outputScript library="js" name="bootstrap.bundle.min.js" />
+
+
+    <!-- Core plugin JavaScript-->
+    <h:outputScript library="js" name="jquery.easing.js" />
+
+
+    <!-- Custom scripts for all pages-->
+    <h:outputScript library="js" name="sb-admin-2.js" />
+
+    <script>
+        $(document).ready(function () {
+            $("#sidebarToggle, #sidebarToggleTop").on('click', function (e) {
+                $("body").toggleClass("sidebar-toggled");
+                $(".sidebar").toggleClass("toggled");
+                if ($(".sidebar").hasClass("toggled")) {
+                    $('.sidebar .collapse').collapse('hide');
+                };
+            });
+        });
+    </script>
+
+
+
+</h:head>
+
+<h:body id="page-top">
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-db sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+
+            <a class="sidebar-brand align-items-center" href="index.html">
+                <div class="sidbar-brand-bordder">
+                    <div class="sidebar-brand-icon">
+                        <p:graphicImage url="/../#{request.contextPath}images/dbLogo.jpg" height="100" />
+
+                    </div>
+                </div>
+
+            </a>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider " />
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/Report/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                SWIFT Message
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-address-card"></i>
+
+                    <span>SWIFT Message</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <!-- <a class="collapse-item" href="/Message/new"> New Message</a> -->
+                        <a class="collapse-item" href="/Message/SwiftMessage"> Swift Message</a>
+
+                        <a class="collapse-item" href="/Message/View">View Message</a>
+                        <a class="collapse-item" href="/Message/MakerView">Trnsactions</a>
+                    </div>
+                </div>
+                
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Settings
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBank"
+                    aria-expanded="true" aria-controls="collapseBank">
+                    <i class="fas fa-fw fa-handshake"></i>
+                <span>Banks</span>
+                </a>
+                <div id="collapseBank" class="collapse" aria-labelledby="headingDeclaration"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="/Bank/View">View Bank</a>
+                        <a class="collapse-item" href="/Bank/new">New Bank</a>
+                       
+
+                        
+
+                    </div>
+                </div>
+
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCountry"
+                    aria-expanded="true" aria-controls="collapseCountry">
+                    <i class="fas fa-fw fa-handshake"></i>
+                <span>Country</span>
+                </a>
+                <div id="collapseCountry" class="collapse" aria-labelledby="headingDeclaration"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="/Country/View">View Country</a>
+                        <a class="collapse-item" href="/Country/new">New Country</a>
+                       
+
+                        
+
+                    </div>
+                </div>
+
+
+            </li>
+            <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Transaction
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesubscripb"
+                    aria-expanded="true" aria-controls="collapsesubscripb">
+                    <i class="fas fa-fw fa-registered"></i>
+
+                    <span>Transaction</span></a>
+                <div id="collapsesubscripb" class="collapse" aria-labelledby="headingsubscripb"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="/Transaction/PView">Pending FINC Transactions</a>
+                        <a class="collapse-item" href="/Transaction/View">Authorized FINC Transactions</a>
+                        <a class="collapse-item" href="/Transaction/Preta"> Pending Retantion Transactions</a>
+                        <a class="collapse-item" href="/Transaction/reta"> Authorized Retantion Transactions</a>
+                        <a class="collapse-item" href="/Transaction/advice"> Generate Advice</a>
+
+
+                    </div>
+                </div>
+
+                
+                
+
+              
+               
+
+            </li>
+            <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Report
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesubscripb1"
+                    aria-expanded="true" aria-controls="collapsesubscripb1">
+                    <i class="fas fa-fw fa-registered"></i>
+
+                    <span>Report</span></a>
+                <div id="collapsesubscripb1" class="collapse" aria-labelledby="headingsubscripb1"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+
+                        <a class="collapse-item" href="/Report/table">Coresspondent Report</a>
+                        <a class="collapse-item" href="/Report/retatable">Customer Side Report</a>
+                        <a class="collapse-item" href="/Report/Birr"> General Report</a>
+                        <a class="collapse-item" href="/Report/audit"> Audit Report</a>
+
+
+                    </div>
+                </div>
+
+                
+                
+
+              
+               
+
+            </li>
+            <hr class="sidebar-divider" />
+
+            <!-- Heading -->
+           
+            <!-- Nav Item - Charts -->
+           
+
+            <!-- Nav Item - Tables -->
+          
+           
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block" />
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="appName"> SWIFT Management System </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                       
+
+                        <!-- Nav Item - Messages -->
+                        
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">#{homeController.fullName}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="/../#{request.contextPath}images/avatar.png" />
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div id="content">
+                    <p:growl id="growl" life="1000" />
+                    <ui:insert name="body" />
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span> @Dashen Bank Sc    2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/logout"> logout</a>
+                    <!-- <a href="/logout"> logout</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Page level plugins -->
+    <h:outputScript library="js" name="Chart.js" />
+
+
+    <!-- Page level custom scripts -->
+    <h:outputScript library="js" name="chart-area-demo.js" />
+
+
+    <h:outputScript library="js" name="chart-pie-demo.js" />
+
+</h:body>
+
+</html>

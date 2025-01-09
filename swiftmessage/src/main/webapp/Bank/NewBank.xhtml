@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="newProfile">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                                <h3 class="h5 mb-0 text-gray-800">New Bank</h3>
+
+                            </div>
+                        </div>
+                        <div class="col-2" align="right">
+
+
+
+                           
+
+
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+
+                            <h5 class="h6">Bank Information</h5>
+                            <hr />
+                            <div class="container">
+                                   <div class="row">
+                                   
+                                    <div class="col-4  px-md-9">
+                                        <div class="form-group">
+                                            <label for="reference1">Bank Name</label><br />
+                                            <p:inputText id="reference1"
+                                                value="#{tblCorrespondentBankController.bname}"
+                                                title="" />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="countryOfOriginId1">Swift Code
+                                                </label><br />
+                                                <p:inputText id="countryOfOriginId1"
+                                                    value="#{tblCorrespondentBankController.bcide}" />
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="acc">Bank Account
+                                                </label><br />
+                                                <p:inputText id="acc"
+                                                    value="#{tblCorrespondentBankController.bbaknacc}" >
+                                                    <p:ajax event="keyup" listener="#{tblCorrespondentBankController.hello()}" update="accname ccy" />
+                                                    </p:inputText>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="accname">Bank Account Name
+                                                </label><br />
+                                                <p:inputText id="accname"
+                                                    value="#{tblCorrespondentBankController.name}" />
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="ccy">Bank Account Currency
+                                                </label><br />
+                                                <p:inputText id="ccy"
+                                                    value="#{tblCorrespondentBankController.currencyacc}" />
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="correspondentBankId1">Remark
+                                                </label><br />
+                                                <p:inputText id="correspondentBankId1"
+                                                    value="#{tblCorrespondentBankController.bremark}"
+                                                    title="" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+
+
+
+
+                                    
+
+                                  
+
+                                    <f:facet name="footer" align="right">
+                                        <p:commandButton value="Save" ajax="false" icon="pi pi-save"
+                                            styleClass=" ui-button-info"
+                                            style="height:40px !important; width: 100px !important;"
+                                            action="#{tblCorrespondentBankController.save}" process="@this" />
+                                    </f:facet> 
+                                    <div></div>
+
+                                    <f:facet name="footer" align="right">
+
+                                            <p:commandButton type="button" value="Cancel" ajax="true" icon="pi pi-save"
+                                                styleClass=" ui-button-danger"
+                                                style="height:40px !important; width: 100px !important;"
+                                                action="#{tblCorrespondentBankController.cancelEntry()}" update="newProfile"
+                                                 />
+
+
+                                                </f:facet>
+                                    
+
+
+
+
+
+                                
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </p:card>
+
+                    </div>
+
+                  
+
+
+                </div>
+
+
+            </h:form>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

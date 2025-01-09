@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="homeForm">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Corrospondent Side Report</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <p:commandButton value="XLS" styleClass="mr-2 mb-2">
+                        <p:dataExporter type="xls" target="datalist2" fileName="#{reportController.fileName}" />
+                    </p:commandButton>
+                    <p:commandButton value="Export to Excel" action="#{reportController.exportToExcelCorr}" ajax="false"
+                        icon="pi pi-file-excel" styleClass="ui-priority-primary" />
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 0em ;margin-top:0px;padding:0; padding-top:0px">
+                            <div class="contai">
+                                <div class="field col-12 md:col-4" align="center">
+                                    <p:outputLabel for="month" value="Month Picker" />
+                                    <p:datePicker id="month" view="month" value="#{reportController.from}"
+                                        pattern="MM/yyyy" yearNavigator="true" yearRange="2000:2030">
+                                        <p:ajax event="change" listener="#{reportController.getByMonthReta()}"
+                                            update="dataGrd" />
+
+                                    </p:datePicker>
+                                </div>
+
+                                <h:panelGroup id="dataGrd">
+                                    <p:panelGrid columns="1" rendered="#{reportController.dataRnd}">
+                                        <p:dataTable id="datalist2" var="item" value="#{reportController.retaitems}"
+                                            paginator="true" selection="#{reportController.mulselect}"
+                                            rowKey="#{item.id}" rows="10" filteredValue="#{reportController.retaitems}"
+                                            stripedRows="true" widgetVar="shareholderTable"
+                                            rowsPerPageTemplate="10,20,30,40,50,100" paginatorPosition="bottom"
+                                            scrollable="true">
+
+
+                                            <p:columnGroup type="header">
+                                                <p:row>
+                                                    <p:column headerText="TRN_REF_NO" />
+                                                    <p:column headerText="Branch" />
+                                                    <p:column headerText="Product" />
+                                                    <p:column headerText="Corr_ACC_Name" />
+                                                    <p:column headerText="Corr_AC_No" />
+                                                    <p:column headerText="Corr_AC_CCy" />
+                                                    <p:column headerText="TRN_DT" />
+                                                    <p:column headerText="VALUE_DT" />
+                                                    <p:column headerText="INSTRUMENT_CODE" />
+                                                    <p:column headerText="DRCR_NO" />
+                                                    <p:column headerText="FCY_AMOUNT" />
+                                                    <p:column headerText="EXCH_RATE" />
+                                                    <p:column headerText="LCY_AMOUNT" />
+                                                    
+                                                </p:row>
+
+                                            </p:columnGroup>
+
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="TRN_REF_NO" />
+                                                </f:facet>
+                                                <h:outputText value="#{item.transactionNumber}" />
+
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Branch Name" />
+                                                </f:facet>
+                                                <h:outputText value="#{reportController.getCorrBranch(item)}" />
+
+
+
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Product" />
+                                                </f:facet>
+                                                <h:outputText value="#{reportController.getProduct(item)}" />
+
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Corr_ACC_Name" />
+                                                </f:facet>
+                                                <h:outputText value="#{reportController.getCorrAccName(item)}" />
+
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Corr_AC_No" />
+                                                </f:facet>
+                                                <h:outputText value="#{reportController.getCorrAccNo(item)}" />
+
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Corr_AC_CCy" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{reportController.getCorrAccccy(item)}" />
+
+
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="TRN_DT" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.registrationDate}" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                    </h:outputText>
+
+
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value=" VALUE_DT" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.valueDate}" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                    </h:outputText>
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="INSTRUMENT_CODE" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.reference}" />
+
+
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="DRCR_NO" />
+                                                </f:facet>
+
+                                                <h:outputText value="DR" />
+
+
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="FCY_AMOUNT" />
+                                                </f:facet>
+                                                <h:outputText value="#{item.message.fcyAmount}" />
+
+
+
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="EXCH_RATE" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{item.message.rate}" />
+
+
+                                            </p:column>
+                                            <p:column >
+                                                <f:facet name="header">
+                                                    <h:outputText value="LCY_AMOUNT" />
+                                                </f:facet>
+
+                                                <h:outputText value="#{reportController.getCorrLcyAmt(item)}" />
+
+
+                                            </p:column>
+
+                                            
+                                           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </p:dataTable>
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+
+
+
+
+                            </div>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

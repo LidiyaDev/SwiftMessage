@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="homeForm">
+                <div class="container-fluid">
+                    <p:growl id="growl" showDetail="true" life="3000" />
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Swift Message</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 0em ;margin-top:0px;padding:0; padding-top:0px">
+                            <div class="contai">
+                                <p:dataTable var="item" value="#{messageController.mesitem}" paginator="true" selectionMode="single"
+                                    selection="#{messageController.selected}" rowKey="#{item.id}" rows="10"
+                                    filteredValue="#{messageController.mesitem}" stripedRows="true"
+                                    widgetVar="shareholderTable" rowsPerPageTemplate="10,20,30,40,50,100"
+                                    paginatorPosition="bottom" scrollable="true">
+                                    <f:facet name="header">
+                                        <div class="p-d-flex p-ai-center p-jc-between" align="right">
+
+                                            <p:inputText id="globalFilter" onkeyup="PF('shareholderTable').filter()"
+                                                style="width:50% !important; position: relative !important; display: inline-table "
+                                                placeholder="Enter keyword" />
+                                            <span class="ui-icon  ui-icon-search"
+                                                style=" font-size: 18px !important;position: relative !important; display: inline-table "></span>
+                                        </div>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect"   update="viewButton editButton"/>
+                                    <p:ajax event="rowUnselect" update="viewButton editButton"/>
+                                   
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.reference}"
+                                        sortBy="#{item.reference}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Sender Reference" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.reference}" />
+
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.bankReference}"
+                                    sortBy="#{item.bankReference}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Bank Reference" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.bankReference}" />
+
+
+
+                                </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.registrationDate}"
+                                        sortBy="#{item.registrationDate}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Registration Date" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.registrationDate}" />
+
+
+
+                                    </p:column>
+
+
+
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.countryOfOrigin}"
+                                        sortBy="#{item.countryOfOrigin}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Country of Origin" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.countryOfOrigin}" />
+                                    </p:column>
+
+
+
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.senderBank}"
+                                        sortBy="#{item.senderBank}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Sender Bank" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.senderBank}" />
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.correspondentBank}"
+                                        sortBy="#{item.correspondentBank}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Correspondent Bank" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.correspondentBank}" />
+
+
+                                    </p:column>
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.orderingCustomer}"
+                                        sortBy="#{item.orderingCustomer}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Ordering Customer" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.orderingCustomer}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.registrationDate}"
+                                        sortBy="#{item.registrationDate}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Registration Date" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.registrationDate}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.accountType}"
+                                        sortBy="#{item.accountType}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Account Type" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.accountType}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.accountNumber}"
+                                        sortBy="#{item.accountNumber}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Account Number" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.accountNumber}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.beneficiary}"
+                                        sortBy="#{item.beneficiary}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Beneficiary" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.beneficiary}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.otherBankBranch}"
+                                        sortBy="#{item.otherBankBranch}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Other Bank" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.otherBankBranch}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.currencyId}"
+                                        sortBy="#{item.currencyId}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Currency" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.currencyId}" />
+
+
+                                    </p:column>
+                                    
+                                    <p:column filterMatchMode="contains" filterBy="#{item.paymentPurpose}"
+                                        sortBy="#{item.paymentPurpose}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Payment Purpose" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.paymentPurpose}" />
+
+
+                                    </p:column>
+                                    <p:column>
+
+                                        <p:commandButton id="viewButton"  icon="pi pi-eye" oncomplete="PF('messageviewDialog').show()" update=":messageviewform"
+                                            styleClass="rounded-button ui-button-info" action="#{messageController.prepareSelect(items)}"
+                                            style="width:30px !important;height:30px !important" />
+
+
+
+
+
+
+                                            <a href="./edit1?id=#{item.id}">
+                                            <p:commandButton  id="editButton" style="width:30px !important;height:30px !important"
+                                                type="button" icon="pi pi-trash" ajax="false" update="homeForm growl"
+                                                styleClass="rounded-button ui-button-warning" />
+                                       
+                                            </a>
+                                        
+
+                                    </p:column>
+
+
+
+
+
+                                </p:dataTable>
+
+
+
+                            </div>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+
+            <ui:include src="messageviewmodal.xhtml" />
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

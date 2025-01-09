@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="newProfile">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                                <h3 class="h5 mb-0 text-gray-800">Swift Message</h3>
+
+                            </div>
+                        </div>
+                        <div class="col-2" align="right">
+
+
+
+                          
+
+
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+
+                            <h5 class="h6">Sender Information</h5>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-4  px-md-9">
+                                        <div class="form-group">
+                                            <label for="reference1">Sender's Reference</label><br />
+                                            <p:inputText id="reference1" value="#{messageController.refferencenumber}"
+                                                title="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+
+                                            <p:commandButton value="Search" ajax="false" icon="pi pi-save"
+                                                styleClass=" ui-button-info"
+                                                style="height:40px !important; width: 100px !important;"
+                                                action="#{messageController.retriveMeesage(messageController.refferencenumber)}"
+                                                process="@this" />
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12  px-md-12">
+
+                                        <div class="row">
+                                            <div class="col-4 px-md-4">
+                                                <div class="form-group">
+                                                    <label for="countryOfOriginId1">Country of Origin
+                                                    </label><br />
+                                                    <p:inputText id="countryOfOriginId1"
+                                                        placeholder="#{messageController.BRANCH}"
+                                                        value="#{messageController.BRANCH}" />
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-4 px-md-4">
+                                                <div class="form-group">
+                                                    <label for="senderBank1">Sender Bank
+                                                    </label><br />
+                                                    <p:inputText placeholder="#{messageController.SENDER}"
+                                                        id="senderBank1" value="#{messageController.SENDER}" title="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-4 px-md-4">
+                                                <div class="form-group">
+                                                    <label >Correspondent Bank
+                                                    </label><br />
+                                                    
+                                                    <sapn style="display:block;position: relative; border:#ccc solid 1px; width:100%; height:35px;padding:5px;border-radius:5px;">
+                                                        #{messageController.getCorrespondentBank(messageController.MESSAGE)}"
+
+                                                    </sapn> 
+                                                       
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="row">
+                                           
+
+                                            <div class="col-4 px-md-4">
+                                                <div class="form-group">
+                                                    <label for="orderingCustomer1">ORDERING CUSTOMER
+                                                    </label><br />
+                                                    <p:inputText id="orderingCustomer1"
+                                                        placeholder="#{messageController.getOrderingCustomer(messageController.MESSAGE)}"
+                                                        value="#{messageController.getOrderingCustomer(messageController.MESSAGE)}"
+                                                        title="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-4 px-md-4">
+                                                <div class="form-group">
+                                                    <label for="registrationDate1">Registration Date
+                                                    </label><br />
+                                                    <p:inputText id="registrationDate1"
+                                                        value="#{swiftMessageController.selected.registrationDate}"
+                                                        title="" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                          
+                                        </div>
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </p:card>
+
+                    </div>
+
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+
+                            <h5 class="h6">Account Information</h5>
+                            <hr />
+                            <div class="container">
+
+                                <div class="row">
+
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <label for="accountNumber1">Account Number
+                                            </label><br />
+                                            <p:inputText id="accountNumber1" rendered="#{messageController.viewrnd}"
+                                                value="#{messageController.getAccountNumber(messageController.MESSAGE)}" />
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4  px-md-9">
+                                        <div class="form-group">
+                                            <label for="accountTypeId1">Account Type</label><br />
+                                            <p:inputText id="accountTypeId1"
+                                               
+                                                value="#{messageController.ACCOUNT_CLASS}" title="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <label visibility="hidden" for="beneficiaryId1">Beneficiary Name
+                                            </label><br />
+                                            <p:inputText id="beneficiaryId1" value="#{messageController.AC_DESC}"
+                                                title="" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row">
+                                   
+
+
+
+
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <label for="currencyId1">CURRENCY
+                                            </label><br />
+                                            <p:inputText id="currencyId1" value="#{messageController.CCY}"
+                                                title="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <label for="fcyAmount1">FCY AMOUNT
+                                            </label><br />
+                                            <p:inputText id="fcyAmount1" value="#{messageController.AMOUNT}"
+                                                title="" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <label for="paymentPurpose1">Payment Purpose
+                                            </label><br />
+                                            <p:inputText id="paymentPurpose1"
+                                                value="#{swiftMessageController.selected.paymentPurpose}"
+                                                title="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                               
+
+
+
+                                  
+                                <div class="col-8  px-md-8">
+
+
+
+
+
+                                       
+
+                                       
+
+                                    <f:facet name="footer" align="right">
+                                        <p:commandButton value="Save" ajax="false" icon="pi pi-save"
+                                            styleClass=" ui-button-info"
+                                            style="height:40px !important; width: 100px !important;"
+                                            action="#{swiftMessageController.save}" process="@this" />
+                                    </f:facet>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+                               
+                            </div>
+
+
+
+
+
+
+
+
+                        </p:card>
+
+                    </div>
+
+                    
+
+
+                </div>
+
+
+            </h:form>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

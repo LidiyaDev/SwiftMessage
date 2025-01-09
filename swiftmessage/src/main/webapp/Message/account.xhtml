@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="newProfile">
+                <div class="container-fluid">
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                        </p:messages>
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                                <h3 class="h5 mb-0 text-gray-800">Transfer Information</h3>
+
+                            </div>
+                        </div>
+                        <div class="col-2" align="right">
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row" rendered="#{messageController.viewrnd}">
+                        <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+                            <h5 class="h6">Account Information</h5>
+                            <hr />
+
+                            <div class="container">
+                                <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+                                    <p:selectBooleanCheckbox value="#{fincTransactionController.newaccrnd}"
+                                        itemLabel="To Another Account">
+                                        <p:ajax event="change" listener="#{fincTransactionController.calculateFinalAmount()}" update="newa cust cust2" />
+                                    </p:selectBooleanCheckbox>
+
+
+
+                                </h:panelGrid>
+                                <h:panelGroup id="newa" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{fincTransactionController.newaccrnd}"
+                                                    for="naccnum" value="New Customer Account Number"></h:outputLabel>
+                                                <br />
+                                                <p:inputText rendered="#{fincTransactionController.newaccrnd}"
+                                                    id="naccnum" value="#{fincTransactionController.accountnum}"
+                                                    title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+
+                                                <p:commandButton rendered="#{fincTransactionController.newaccrnd}"
+                                                    value="Search" ajax="true" icon="pi pi-save"
+                                                    styleClass=" ui-button-info"
+                                                    style="height:40px !important; width: 100px !important;"
+                                                    action="#{fincTransactionController.retriveAccount()}"
+                                                    update="newProfile FinalAmount" />
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{fincTransactionController.newaccrnd}"
+                                                    for="ncusname" value="New Customer Name"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{fincTransactionController.newaccrnd}"
+                                                    id="ncusname" value="#{fincTransactionController.AC_DESC}"
+                                                    title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{fincTransactionController.newaccrnd}"
+                                                    for="nacccuy" value="New Account Currency"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{fincTransactionController.newaccrnd}"
+                                                    id="nacccuy" value="#{fincTransactionController.ACCY}" title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{fincTransactionController.newaccrnd}"
+                                                    for="nabranch" value="New Account Branch"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{fincTransactionController.newaccrnd}"
+                                                    id="nabranch" value="#{fincTransactionController.BRANCH_CODE}" title="" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </h:panelGroup>
+                                
+
+
+                                <h:panelGroup id="cust" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{!fincTransactionController.newaccrnd}"
+                                                    for="accnum" value="Customer Account Number"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{!fincTransactionController.newaccrnd}"
+                                                    id="accnum" value="#{messageController.accountNumber}" title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{!fincTransactionController.newaccrnd}"
+                                                    for="cusname" value="Customer Name"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{!fincTransactionController.newaccrnd}"
+                                                    id="cusname" value="#{messageController.AC_DESC}" title="" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel rendered="#{!fincTransactionController.newaccrnd}"
+                                                    for="acccuy" value="Account Currency"></h:outputLabel><br />
+                                                <p:inputText disabled="true" rendered="#{!fincTransactionController.newaccrnd}"
+                                                    id="acccuy" value="#{messageController.ACCY}" title="" />
+
+                                            </div>
+                                        </div>
+                                       
+
+                                    </div>
+                                </h:panelGroup>
+
+
+                                <div class="row">
+
+
+                                    <div class="col-4  px-md-9">
+
+                                        <div class="form-group">
+                                            <label for="accountTypeId1">Amount</label><br />
+                                            <p:inputText disabled="true" id="accountTypeId1" value="#{messageController.AMOUNT}"
+                                                title="" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-4  px-md-9">
+
+                                        <div class="form-group">
+                                            <label for="amountccy">Amount Currency</label><br />
+                                            <p:inputText disabled="true" id="amountccy" value="#{messageController.CCY}" title="" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-4  px-md-9">
+
+                                        <div class="form-group">
+                                            <label for="valuedate">Value Date</label><br />
+                                            <p:inputText disabled="true" id="valuedate" value="#{messageController.VALUE_DATE}"
+                                                title="" />
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <h:panelGroup id="cust2" columns="1" layout="flex"
+                                    columnClasses="p-col-12 p-md-3 p-xl-2">
+                                    <div class="row">
+
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="buyrate">Buy Exchange Rate
+                                                </label><br />
+                                                <p:inputText disabled="true" id="buyrate" value="#{messageController.valueRate}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <label visibility="hidden" for="sellrate">Sell Exchange Rate
+                                                </label><br />
+                                                <p:inputText disabled="true" id="sellrate" value="#{fincTransactionController.sellRate}"
+                                                    title="" />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-4 px-md-9">
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="FinalAmount" value="Final Amount"></h:outputLabel><br />
+                                                <p:inputText disabled="true" id="FinalAmount" value="#{fincTransactionController.finalAmount}" title="" />
+
+                                            </div>
+
+
+                                        </div>
+                                       
+                                       
+                                    </div>
+
+                                </h:panelGroup>
+                                <div class="row">
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+                                            <a href="/Message/View">
+                                                <p:commandButton value="Pay" ajax="true" icon="pi pi-save"
+                                                styleClass=" ui-button-info"
+                                                style="height:40px !important; width: 100px !important;"
+                                                action="#{fincTransactionController.saveMeesage(messageController.tmpSavedData)}" update="newProfile" />
+
+                                            </a>
+                                            
+
+
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+
+
+
+
+                            </div>
+                        </p:card>
+                    </div>
+
+                    <p:panel rendered="#{fincTransactionController.retaAcc}">
+                        <div class="row" rendered="#{fincTransactionController.retaAcc}">
+                            <div class="container">
+                                <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+    
+                                    <h5 class="h6">Retention Account Information</h5>
+                                    <hr />
+    
+                                    <h:panelGroup id="fcyp" columns="1" layout="flex"
+                                        columnClasses="p-col-12 p-md-3 p-xl-2">
+                                        <div class="row">
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="fcyacc1">Retantion Account Number</label><br />
+                                                    <p:inputText disabled="true" id="fcyacc1" value="#{fincTransactionController.AC_DESC}"
+                                                        title="">
+                                                        
+                                                    </p:inputText>
+    
+                                                </div>
+                                            </div>
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="fcyname1">Other Customer Name</label><br />
+                                                    <p:inputText disabled="true" id="fcyname1" value="#{fincTransactionController.AC_DESC}"
+                                                        title="">
+                                                        
+                                                    </p:inputText>
+                                                        
+    
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="fcycc1">Other Account Currency</label><br />
+                                                    <p:inputText disabled="true" id="fcycc1" value="#{fincTransactionController.ACCY}" title="" />
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                    <h:panelGroup id="etbp" columns="1" layout="flex"
+                                        columnClasses="p-col-12 p-md-3 p-xl-2">
+                                        <div class="row">
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="etbacc1">Account Number</label><br />
+    
+                                                    <p:inputText id="etbacc1" value="#{fincTransactionController.etbaccount}"
+                                                    title="" >
+                                                    <p:ajax event="keyup" listener="#{fincTransactionController.searchAcc()}"
+
+                                                        update="etbname etbccy" />
+                                                </p:inputText>
+                                                    
+                                                    
+                                                    
+    
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="etbname1">Customer Name</label><br />
+                                                    <p:inputText disabled="true" id="etbname1" value="#{fincTransactionController.RAC_DESC}"
+                                                        title="" />
+    
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label for="etbccy1"> Customer Currency</label><br />
+                                                    <p:inputText disabled="true" id="etbccy1" value="#{fincTransactionController.RACCY}"
+                                                        title="" />
+    
+                                                </div>
+                                            </div>
+    
+    
+    
+                                        </div>
+                                    </h:panelGroup>
+                                    <h:panelGroup id="infop1" columns="1" layout="flex"
+                                        columnClasses="p-col-12 p-md-3 p-xl-2">
+                                        <div class="row">
+    
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="valuedate1">Value Date
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="valuedate1" value="#{messageController.VALUE_DATE}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="buying1">Buying Exchange Rate
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="buying1" value="#{messageController.valueRate}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+
+                                            <div class="col-4 px-md-9">
+
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="retsellrate">Sell Exchange Rate
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="retsellrate" value="#{fincTransactionController.retaSellingRate}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+
+                                           
+                                            
+                                        </div>
+                                    </h:panelGroup>
+                                </p:card>
+    
+    
+                                <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+                                    <h5 class="h6">Amount Information</h5>
+                                    <hr />
+                                    <h:panelGroup id="amount1p" columns="1" layout="flex"
+                                        columnClasses="p-col-12 p-md-3 p-xl-2">
+                                        <div class="row">
+    
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <label visibility="hidden" for="fcypercent">FCY %
+                                                        </label>
+                                                        <p:inputText id="fcypercent" value="#{fincTransactionController.fcyRate}"
+                                                            title="" >
+                                                        <p:ajax event="keyup" listener="#{fincTransactionController.calculateOtherRetaAmount(messageController.AMOUNT,messageController.CCY,messageController.valueRate,fincTransactionController.ACCY,messageController.VALUE_DATE)}" update="fcyamount1 etbamount1" />
+                                                        </p:inputText>
+                                                    </div>
+    
+                                                </div>
+    
+    
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="messamount1">Message Amount
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="messamount1" value="#{messageController.AMOUNT}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="messamountccy1">Message Amount Currency
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="messamountccy1" value="#{messageController.CCY}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+                                        </div>
+    
+                                        <div class="row">
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="fcyamount1">Final FCY Amount
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="fcyamount1" value="#{fincTransactionController.finalRFcy}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+                                            <div class="col-4 px-md-9">
+    
+                                                <div class="form-group">
+                                                    <label visibility="hidden" for="etbamount1">Final ETB Amount
+                                                    </label><br />
+                                                    <p:inputText disabled="true" id="etbamount1" value="#{fincTransactionController.finaletb}"
+                                                        title="" />
+                                                </div>
+    
+    
+                                            </div>
+                                        </div>
+                                    </h:panelGroup>
+                                </p:card>
+    
+                                <div class="row">
+                                    <div class="col-4 px-md-9">
+                                        <div class="form-group">
+    
+                                            <p:commandButton value="Pay" ajax="true" icon="pi pi-save"
+                                                styleClass=" ui-button-info"
+                                                style="height:40px !important; width: 100px !important;"
+                                                action="#{fincTransactionController.saveRetaMeesage(messageController.tmpSavedData,fincTransactionController.accountnum,fincTransactionController.AC_DESC,fincTransactionController.ACCY)}" update="newProfile" />
+    
+    
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+    
+    
+    
+    
+                            </div>
+    
+                        </div>
+                    </p:panel>
+                    
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+            </h:form>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

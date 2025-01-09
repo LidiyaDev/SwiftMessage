@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="editProfile">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                                <h3 class="h5 mb-0 text-gray-800">Edit Bank</h3>
+
+
+                            </div>
+                        </div>
+                        <div class="col-2" align="right">
+
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
+
+
+
+                        </div>
+                    </div>
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 1em ;margin-top:0px;padding:1em; padding-top:0px">
+                            <div class="container">
+                                <h5 class="h6">bank Details</h5>
+                                <hr />
+                                <div class="row">
+
+                                    <div class="col-12">
+
+
+                                        <div class="row ">
+
+
+                                            
+                                            <div class="col-8">
+                                                <div class="form-group">
+                                                    <label for="fullName">Full Name</label><br />
+                                                    <p:inputText id="fullname" style="width:100% !important"
+                                                        value="#{tblCorrespondentBankController.selected.name}"
+                                                        title="#{bundle.CreateShareholdersTitle_fullname}" />
+
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="accno">Account NO</label><br />
+                                                    <p:inputText id="accno"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{tblCorrespondentBankController.selected.code}"
+                                                        title="#{bundle.CreateShareholdersTitle_fullname}" size="50" />
+
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <label for="accno">TIN NO</label><br />
+                                                    <p:inputText id="tinno"
+                                                        style="width:100% !important; height: 35px !important"
+                                                        value="#{tblCorrespondentBankController.selected.remark}" title="TIN NO"
+                                                        size="50" />
+
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+                                           
+                                            
+
+                                           
+
+
+                                        </div>
+
+                                        <div class="row gutters">
+
+                                           
+                                            
+                                            
+                                           
+                                           
+                                        </div>
+
+
+                                        <div class="row gutters">
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <h5 class="h6">Edicucational Background</h5>
+                                                <hr />
+                                            </div>
+                                          
+                                           
+                                           
+
+                                          
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <f:facet name="footer" align="left">
+                                <p:commandButton value="Update" ajax="false" icon="pi pi-save"
+                                    styleClass=" ui-button-info"
+                                    style="height:40px !important; width: 100px  !important;"
+                                    action="#{tblCorrespondentBankController.update}" process="@this" />
+
+                            </f:facet>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

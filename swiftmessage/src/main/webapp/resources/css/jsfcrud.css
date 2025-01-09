@@ -1,0 +1,513 @@
+.appName {
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    text-transform: uppercase;
+    color: #0056b3;
+
+    font-size: 22px;
+}
+
+.ui-widget {
+    font-size: 12px !important;
+}
+
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;
+    ;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ui-button {
+    margin-top: 00px !important;
+}
+
+/*.....  Data table          */
+
+
+.ui-datatable .ui-datatable-data td,
+.ui-datatable .ui-datatable-data-empty td {
+    border-style: none;
+}
+
+.ui-datatable {
+    background-color: #a6a8b3 !important;
+}
+
+.ui-datatable .ui-state-highlight {
+    background-image: none;
+    background-color: #a9abb4;
+    border: #3f4951 solid 1px;
+}
+
+.ui-datatable .ui-state-highlight tr {
+    border: #3a53c0 solid 1px;
+}
+
+.ui-datatable .ui-datatable-data .ui-state-hover {
+    color: black !important;
+    background-color: #c6e2ff !important;
+    color: #ffffff;
+}
+
+.ui-datatable .ui-datatable-data .ui-state-hover tr {
+    color: black !important;
+    background-color: #32383d !important;
+    color: #ffffff;
+}
+
+
+
+/*..... end  Data table          */
+
+
+
+
+/**** End of Dialog  *************************/
+
+
+
+.ui-widget {
+    font-size: 12px !important;
+}
+
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;
+    ;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.ui-button {
+    margin-top: 10px !important;
+}
+
+.lebelClass {
+
+    font-size: 18px !important;
+    font-family: arial !important;
+    color: #10707f !important;
+
+
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em 2.2em;
+    border-top: 0;
+    margin-top: -2px;
+    position: relative;
+    top: 1px;
+    margin-bottom: 2px;
+    overflow: auto;
+    display: none;
+    zoom: 1;
+}
+
+
+ui-accordion .ui-accordion-content {
+    background: #808b96 !important;
+}
+
+.ui-accordion .ui-accordion-header {
+    background: #1f618d !important;
+    color: #fff !important;
+    font-size: 14px !important;
+}
+
+.ui-accordion.detail {
+    color: #273746 !important;
+    background-color: #808b96 !important;
+}
+
+
+.ui-toggleswitch.ui-toggleswitch-checked .ui-toggleswitch-slider {
+
+    background-color: #1581ed;
+}
+
+.ui-toggleswitch .ui-toggleswitch-slider::before {
+
+    background-color: #c7d1dc;
+
+    left: 0.25em;
+    bottom: .25em;
+    border-radius: 50%;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+}
+
+.ui-toggleswitch .ui-toggleswitch-slider:after {
+
+    right: 9.25em;
+
+}
+
+.ui-grid-col-1 {
+    margin-bottom: 10px !important;
+}
+
+.ui-outputlabel {
+    font-size: 14px !important;
+    color: #084480 !important;
+    margin-top: 5px !important;
+    margin-left: 5px !important;
+}
+
+.ui-inputfield {
+
+    width: 98% !important;
+    border: solid #1581ed 1px !important;
+    margin-bottom: 10px !important;
+    margin-top: 1px !important;
+
+}
+
+.ui-state-highlight {
+    border: solid #e33b06 1px !important;
+
+}
+
+.ui-outputlabel {
+    font-size: 14px !important;
+    color: #084480 !important;
+    margin-top: 0px !important;
+    margin-left: 5px !important;
+}
+
+
+
+
+.ui-menubar {
+    border: 1px solid #aed0ea !important;
+    background: #e0e3eb url(../images/myImage.png) 50% 50% repeat-x !important;
+    color: #fff !important;
+    font-weight: bolder !important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label {
+    width: 100% !important;
+    border: none;
+    display: block;
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label.ui-inputfield.ui-corner-all {
+    text-overflow: ellipsis;
+}
+
+.ui-inputfield {
+    margin: 0;
+    padding: 5px;
+    background: #ffffff;
+    font-weight: normal;
+    outline: medium none;
+    box-shadow: inset 0 0 0 #8f8f8f !important;
+    -webkit-box-shadow: inset 0 0 0 #8f8f8f !important;
+}
+
+
+
+
+.ui-datatable .ui-datatable-data td,
+.ui-datatable .ui-datatable-data-empty td {
+    border-style: none;
+}
+
+.ui-datatable {
+    background-color: #084480 !important;
+}
+
+.ui-datatable .ui-state-highlight {
+    background-image: none;
+    color: #000;
+    background-color: #5cd0a6;
+    border: #3f4951 solid 1px;
+}
+
+.ui-datatable .ui-state-highlight tr {
+    border: #3f4951 solid 1px;
+}
+
+.ui-datatable .ui-datatable-data .ui-state-hover {
+    color: black !important;
+    background-color: #b5b8bb !important;
+    color: #ffffff;
+}
+
+.ui-datatable .ui-datatable-data .ui-state-hover tr {
+    color: black !important;
+    background-color: #32383d !important;
+    color: #ffffff;
+}
+
+
+
+.tooglebtn .ui-button.ui-state-active .ui-button-text,
+.ui-buttonset .ui-state-active .ui-button-text {
+    background: linear-gradient(to bottom, #F7A64A 0%, #C76C13 100%);
+    color: #F0EFEC !important;
+}
+
+.ui-button.ui-state-active .ui-button-text,
+.ui-buttonset .ui-state-active .ui-button-text {
+    background: linear-gradient(to bottom, #127cbc 0%, #125b88 100%);
+
+    color: #F0EFEC !important;
+}
+
+
+
+
+
+
+.ui-tabs .ui-tabs-nav {
+    text-align: center;
+}
+
+.ui-tabs .ui-tabs-nav {
+
+    align-items: left !important;
+    display: inline-block;
+}
+
+.ui-tabs .ui-tabs-nav-selected {
+    background-color: #0b0559 !important;
+}
+
+.tab-header .ui-tabview-selected {
+    background-color: #0b0559 !important;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    float: left !important;
+}
+
+.ui-inputfield {
+    border: #dddedf solid 1px !important;
+    height: 35px !important;
+    color: #3a4651 !important;
+    padding: 5px;
+    /* padding-bottom: 1px !important;
+    margin-bottom: 1px !important;*/
+
+}
+
+
+.ui-selectonemenu .ui-selectonemenu-label {
+    width: 100% !important;
+    border: #dddedf solid 1px !important;
+    display: block !important;
+    cursor: pointer !important;
+    text-align: left !important;
+    overflow: hidden !important;
+    color: #3a4651 !important;
+    white-space: nowrap !important;
+    font-weight: normal !important;
+    margin: 0px !important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label.ui-inputfield.ui-corner-all {
+    text-overflow: ellipsis !important;
+    width: 100%;
+
+}
+
+.primaryButton {
+    border-width: 1px;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #13a2d8 !important;
+    color: #fff !important;
+    height: 35px;
+    width: 80px;
+
+}
+
+.voteButton {
+    display: block;
+    border-width: 1px;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #2f6c36 !important;
+    color: #fff !important;
+    height: 35px;
+    width: 99% !important;
+    align-content: left;
+    text-align: left;
+
+}
+
+.attendanceButton {
+    border-width: 1px;
+    display: block;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #c43b1b !important;
+    color: #fff !important;
+    height: 35px;
+    width: 99% !important;
+    align-content: left;
+    text-align: left;
+
+}
+
+.Active {
+    border-width: 1px;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #a3e4d7 !important;
+    color: #fff !important;
+    height: auto !important;
+    width: 90px !important;
+
+}
+
+.Blocked {
+    border-width: 1px;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #e6b0aa !important;
+    color: #fff !important;
+    height: auto !important;
+    width: 90px !important;
+
+}
+
+.primaryButton2 {
+    border-width: 1px;
+    border-color: #322ff9;
+    border-style: solid;
+    text-align: center;
+
+    background: #13a2d8 !important;
+    color: #fff !important;
+    height: 25px;
+    width: auto !important;
+
+}
+
+.secondaryBtn {
+    border-width: 1px;
+    border-color: #999;
+    border-style: solid;
+    text-align: center;
+
+    background: #999 !important;
+    color: #fff !important;
+    height: 35px;
+    width: 80px;
+}
+
+
+/***********************************************Dialog88***********/
+.ui-dialog {
+    background-color: #edecf1 !important;
+    border-right: 100px !important;
+
+}
+
+.ui-dialog-titlebar {
+    display: block !important;
+    text-align: left !important;
+    background-color: #363c5a !important;
+    color: #FFFFFF !important;
+    height: 40px !important;
+    font-size: 12px !important;
+    display: block !important;
+    align-self: left !important;
+    float: left !important;
+    position: relative !important;
+    top: 0px !important;
+    padding: 10px !important;
+
+}
+
+.ui-dialog-titlebar-close {
+    display: block;
+    position: relative;
+    top: -5px !important;
+    background-color: #FFFFFF !important;
+    color: #e90e18 !important;
+
+}
+
+.ui-dialog-body {
+    background-color: #363c5a !important;
+}
+
+
+
+/***88888888888***********************************************************/
+.recordLabel {
+    display: block;
+    font-size: 18px !important;
+    ;
+    color: #125b88 !important;
+    background-color: #fafafa !important;
+
+
+}
+
+.title {
+    font-size: 16px;
+    display: block;
+    color: #626285 !important;
+    border-left: #18188b solid 3px;
+
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.ui-filter-column .ui-column-customfilter .custom-filter {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.ui-inputfield {
+
+    width: 100% !important;
+}
+
+.roundEditbutton {
+    display: relative;
+    width: 50px;
+
+
+    background-color: #F7A64A !important;
+    border-radius: 10px !important;
+    border: #C76C13 1px solid;
+
+}

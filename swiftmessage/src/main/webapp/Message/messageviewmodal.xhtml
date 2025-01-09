@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+    <p:dialog id="messageviewDlg" width="50%" widgetVar="messageviewDialog" modal="true" closable="true"
+        appendTo="@(body)" header="View Message">
+
+        <h:form id="messageviewform" style="padding:20px;">
+            <div class="container-fluid">
+
+                <p:tabView id="tabViewMVS">
+                    <p:tab title="Message" id="RESPONSE">
+                        <p:card style="padding :5px;margin-bottom: 0em">
+
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="reference">Bank Reference
+                                                </label><br />
+                                                <p:outputLabel id="reference"
+                                                    value="#{messageController.selected.reference}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="countryOfOrigin">Country of Origin
+                                                </label><br />
+                                                <p:outputLabel id="countryOfOrigin"
+                                                    value="#{messageController.selected.countryOfOrigin}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="senderBank">Sender Bank
+                                                </label><br />
+                                                <p:outputLabel id="senderBank"
+                                                    value="#{messageController.selected.senderBank}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                    <div class="row">
+
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Correspondent Bank
+                                                </label><br />
+                                                <p:outputLabel id="correbank"
+                                                    value="#{messageController.selected.correspondentBank}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Ordering Customer
+                                                </label><br />
+                                                <p:outputLabel id="ordering"
+                                                    value="#{messageController.selected.orderingCustomer}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="criteria">Registration Date</label>
+                                                <p:outputLabel id="criteria1"
+                                                    value="#{messageController.selected.registrationDate}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+                    <p:tab title="Account" id="RESPONSE1">
+                        <p:card style="padding :5px;margin-bottom: 0em">
+
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="acccategory">Account Number
+                                                </label><br />
+                                                <p:outputLabel id="acccategory"
+                                                    value="#{messageController.selected.accountNumber}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="acctype">Account Type
+                                                </label><br />
+                                                <p:outputLabel id="acctype"
+                                                    value="#{messageController.selected.accountType}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="beneficiaryName">Beneficiary Name
+                                                </label><br />
+                                                <p:outputLabel id="beneficiaryName"
+                                                    value="#{messageController.selected.beneficiary}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="customercat">Customer Category
+                                                </label><br />
+                                                <p:outputLabel id="customercat"
+                                                    value="#{messageController.selected.senderBank}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+
+                    <p:tab title="Other" id="ARTFACT">
+                        <p:card style="padding :0px;margin-bottom: 0em">
+                            <div class="row gutters" style="padding: 10px; z-index: 9999 !important;">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="isdashen">Is Dashen
+                                                </label><br />
+                                                <p:outputLabel id="isdashen"
+                                                    value="#{messageController.selected.dashenBranch}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="branch">Dashen Branch
+                                                </label><br />
+                                                <p:outputLabel id="branch"
+                                                    value="#{messageController.selected.dashenBranch}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="otherBank">Other Bank
+                                                </label><br />
+                                                <p:outputLabel id="otherBank"
+                                                    value="#{messageController.selected.otherBankBranch}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+                                    <div class="row">
+
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Currency
+                                                </label><br />
+                                                <p:outputLabel id="curerncy"
+                                                    value="#{messageController.selected.currencyId}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">FCY Amount
+                                                </label><br />
+                                                <p:outputLabel id="fcyamoundt"
+                                                    value="#{messageController.selected.fcyAmount}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="purpose">Payment Purpose</label>
+                                                <p:outputLabel id="purpose"
+                                                    value="#{messageController.selected.paymentPurpose}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+
+
+                                        <div class="col-4 px-md-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass">Reference
+                                                </label><br />
+                                                <p:outputLabel id="ref"
+                                                    value="#{messageController.selected.reference}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+                                        
+
+
+
+
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="vdate">Value Date</label>
+                                                <p:outputLabel id="vdate"
+                                                    value="#{messageController.selected.registrationDate}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label class="lebelClass" for="ratedate">Exchange Rate</label>
+                                                <p:outputLabel id="ratedate"
+                                                    value="#{messageController.selected.rate}"
+                                                    style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                        </p:card>
+                    </p:tab>
+
+
+
+
+
+                </p:tabView>
+
+
+
+
+            </div>
+
+        </h:form>
+    </p:dialog>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+    <p:dialog id="bankviewDlg" width="50%" widgetVar="bankviewDialog" modal="true" closable="true"
+        appendTo="@(body)" header="View Bank">
+
+        <h:form id="bankviewform" style="padding:20px;">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-12">
+                        <p:card style=" margin-bottom: 2em">
+                            <f:facet name="title">
+                                View Bank Details
+                            </f:facet>
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="lebelClass" for="bankname">Bank Name</label><br/>
+                                        <p:outputLabel id="bankname"  value="#{tblCorrespondentBankController.selected.name}" style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+
+                                    </div>
+                                </div> 
+                                <ht/>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="lebelClass" for="swiftcode">Swift Code</label> 
+                                        <p:outputLabel id="swiftcode"  value="#{tblCorrespondentBankController.selected.code}" style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <label class="lebelClass" >Remark</label> <br/>
+                                    <p:outputLabel id="remark"    value="#{tblCorrespondentBankController.selected.remark}" style="z-index: 999999 !important; width: 98% !important;font-size: 16px !important;" />
+                                   
+
+                                </div>
+
+                               
+
+                                
+                            </div>
+
+
+                        </p:card>
+                    </div>
+                </div>
+                
+            </div>
+
+        </h:form>
+    </p:dialog>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+    <p:dialog id="profileapprovalDlg" width="50%" widgetVar="profileapprovalDialog" modal="true" closable="true"
+        appendTo="@(body)" header="New Bank">
+
+        <h:form id="profileapprovalform" style="padding:20px;">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-12">
+                        <p:card style=" margin-bottom: 2em">
+                            <f:facet name="title">
+                                New Bank Details
+                            </f:facet>
+                            <div class="row">
+                                
+                                
+                                   
+                                    <div class="col-4  px-md-9">
+                                        <div class="form-group">
+                                            <label for="reference1">Bank Name</label><br />
+                                            <p:inputText id="reference1"
+                                                value="#{tblCorrespondentBankController.bname}"
+                                                title="" />
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="countryOfOriginId1">Swift Code
+                                                </label><br />
+                                                <p:inputText id="countryOfOriginId1"
+                                                    value="#{tblCorrespondentBankController.bcide}" />
+    
+                                            </div>
+                                        </div>
+                                    
+                                   
+                                   
+                                        <div class="col-4 px-md-9">
+                                            <div class="form-group">
+                                                <label for="correspondentBankId1">Remark
+                                                </label><br />
+                                                <p:inputText id="correspondentBankId1"
+                                                    value="#{tblCorrespondentBankController.bremark}"
+                                                    title="" />
+                                            </div>
+                                        </div>
+                                  
+
+                               
+                               
+                            </div>
+
+
+                        </p:card>
+                    </div>
+                </div>
+                <div class="col-12" align="right">
+
+
+
+                    <p:commandButton value="Save" ajax="false" icon="pi pi-save" styleClass=" ui-button-info"
+                        style="height:30px !important" action="#{tblCorrespondentBankController.save}" process="@this" />
+
+
+                </div>
+            </div>
+
+        </h:form>
+    </p:dialog>
+
+</ui:composition>
+
+</html>

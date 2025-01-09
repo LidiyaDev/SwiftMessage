@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="homeForm">
+                <div class="container-fluid">
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                        </p:messages>
+                    <!-- Page Heading -->
+                    
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 0em ;margin-top:0px;padding:0; padding-top:0px">
+                            <div class="contai">
+                                <p:dataTable var="item" value="#{swiftTransactionController.retaitems}" paginator="true"
+                                    selection="#{retaTransactionController.mulselect}" rowKey="#{item.id}" rows="10"
+                                    filteredValue="#{swiftTransactionController.retaitems}" stripedRows="true"
+                                    widgetVar="shareholderTable" rowsPerPageTemplate="10,20,30,40,50,100"
+                                    paginatorPosition="bottom" scrollable="true">
+                                    <f:facet name="header">
+                                        <div class="p-d-flex p-ai-center p-jc-between" align="right">
+
+                                            <p:inputText id="globalFilter" onkeyup="PF('shareholderTable').filter()"
+                                                style="width:50% !important; position: relative !important; display: inline-table "
+                                                placeholder="Enter keyword" />
+                                            <span class="ui-icon  ui-icon-search"
+                                                style=" font-size: 18px !important;position: relative !important; display: inline-table "></span>
+                                        </div>
+                                    </f:facet>
+                                    <p:column selectionMode="multiple" style="width:16px;text-align:center" />
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.message.reference}"
+                                        sortBy="#{item.message.reference}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Sender Reference" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.message.reference}" />
+
+
+
+                                    </p:column>
+                                    
+                                    <p:column filterMatchMode="contains" filterBy="#{item.message.registrationDate}"
+                                        sortBy="#{item.message.registrationDate}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Registration Date" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.message.registrationDate}" />
+
+
+
+                                    </p:column>
+
+                                    
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.createdBy}"
+                                        sortBy="#{item.createdBy}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Maker" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.createdBy}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.message.fcyAmount}"
+                                        sortBy="#{item.message.fcyAmount}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Total Amount" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.message.fcyAmount}" />
+
+
+                                    </p:column>
+                                   
+
+
+
+
+
+                                    
+                                    <p:column filterMatchMode="contains" filterBy="#{item.retaBirrAccountName}"
+                                        sortBy="#{item.retaBirrAccountName}">
+                                        <f:facet name="header">
+                                            <h:outputText value="RETA Birr AccountName" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.retaBirrAccountName}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.message.accountNumber}"
+                                        sortBy="#{item.message.accountNumber}">
+                                        <f:facet name="header">
+                                            <h:outputText value="RETA FCY Account" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.message.accountNumber}" />
+
+
+                                    </p:column>
+                                    <p:column filterMatchMode="contains" filterBy="#{item.message.beneficiary}"
+                                        sortBy="#{item.message.beneficiary}">
+                                        <f:facet name="header">
+                                            <h:outputText value="RETA FCY AccountName" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.message.beneficiary}" />
+
+
+                                    </p:column>
+                                   
+                                    <p:column filterMatchMode="contains" filterBy="#{item.status}"
+                                        sortBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Status" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{item.status}" />
+
+
+                                    </p:column>
+
+                                    
+
+                                    <p:column filterMatchMode="contains" filterBy="#{item.updatedBy}"
+                                    sortBy="#{item.updatedBy}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Checker" />
+                                    </f:facet>
+
+                                    <h:outputText value="#{item.updatedBy}" />
+
+
+                                </p:column>
+
+
+                                    <p:column>
+                                        <p:commandButton id="viewButton" icon="pi pi-eye"
+                                            oncomplete="PF('messageviewDialog').show()" update=":transactionviewform"
+                                            styleClass="rounded-button ui-button-info"
+                                            action="#{swiftTransactionController.prepareSelect(item)}"
+                                            style="width:30px !important;height:30px !important" />
+                                        &nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+                                    </p:column>
+
+
+
+                                    <f:facet name="footer">
+                                        <p:commandButton id="autorize" value="Autorize"
+                                            style="width:100px !important;height:30px !important"
+                                            styleClass="rounded-button ui-button-sucess"
+                                            action="#{retaTransactionController.autorizeTransaction()}" />
+                                    </f:facet>
+                                    <f:facet name="footer">
+                                        <p:commandButton id="Reject" value="Reject"
+                                            style="width:100px !important;height:30px !important"
+                                            styleClass="rounded-button ui-button-danger"
+                                            action="#{retaTransactionController.rejectTransaction()}" />
+                                    </f:facet>
+
+
+                                </p:dataTable>
+
+
+
+                            </div>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+            <ui:include src="transactionviewmodal.xhtml" />
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

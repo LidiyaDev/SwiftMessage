@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+
+    <ui:composition template="../template.xhtml">
+        <br>.</br>
+        <ui:define name="body">
+
+            <h:form id="homeForm">
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Swift Message</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+                        <p:card style="width: 100%; margin: 0em ;margin-top:0px;padding:0; padding-top:0px">
+                            <div class="contai">
+                                <p:dataTable id="datalist" var="items" value="#{tblCorrespondentBankController.items}" paginator="true"  selectionMode="single"
+                                    selection="#{tblCorrespondentBankController.selected}" rowKey="#{items.id}" rows="10"
+                                    filteredValue="#{tblCorrespondentBankController.items}" stripedRows="true"
+                                    widgetVar="shareholderTable" rowsPerPageTemplate="10,20,30,40,50,100"
+                                    paginatorPosition="bottom" scrollable="true">
+                                    <f:facet name="header">
+                                        <div class="p-d-flex p-ai-center p-jc-between" align="right">
+
+                                            <p:inputText id="globalFilter" onkeyup="PF('shareholderTable').filter()"
+                                                style="width:50% !important; position: relative !important; display: inline-table "
+                                                placeholder="Enter keyword" />
+                                            <span class="ui-icon  ui-icon-search"
+                                                style=" font-size: 18px !important;position: relative !important; display: inline-table "></span>
+                                        </div>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
+                                    <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
+                                    
+
+                                    <p:column filterMatchMode="contains" filterBy="#{items.name}"
+                                        sortBy="#{items.name}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Bank Name" />
+                                        </f:facet>
+                                        <h:outputText value="#{items.name}" />
+
+                                      
+
+                                    </p:column>
+
+
+
+
+                                    <p:column filterMatchMode="contains" filterBy="#{items.code}"
+                                        sortBy="#{items.code}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Swift Code" />
+                                        </f:facet>
+                                        <h:outputText value="#{items.code}" />
+                                    </p:column>
+
+                                    <p:column filterMatchMode="contains" filterBy="#{items.bankAccount}"
+                                        sortBy="#{items.bankAccount}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Bank Account" />
+                                        </f:facet>
+                                        <h:outputText value="#{items.bankAccount}" />
+                                    </p:column>
+
+                                    <p:column filterMatchMode="contains" filterBy="#{items.currency}"
+                                        sortBy="#{items.currency}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Bank Account Currency" />
+                                        </f:facet>
+                                        <h:outputText value="#{items.currency}" />
+                                    </p:column>
+
+
+
+
+                                    
+                                    <p:column filterMatchMode="contains" filterBy="#{items.remark}"
+                                        sortBy="#{items.remark}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Remark" />
+                                        </f:facet>
+
+                                        <h:outputText value="#{items.remark}" />
+
+
+                                    </p:column>
+
+                                   
+                               
+                           
+                  
+               
+        
+                                    <p:column>
+
+                                        <p:commandButton id="viewButton" icon="pi pi-eye" oncomplete="PF('bankviewDialog').show()"
+                                        update=":bankviewform" styleClass="rounded-button ui-button-info" action="#{tblCorrespondentBankController.prepareSelect(items)}"
+                                          
+                                            style="width:30px !important;height:30px !important" />
+                                            &nbsp;&nbsp;
+
+
+
+
+
+
+                                        
+
+                                        <p:commandButton id="editButton" icon="pi pi-pencil" oncomplete="PF('bankeditDialog').show()"
+                                        styleClass="rounded-button ui-button-info" action="#{tblCorrespondentBankController.prepareSelect(items)}" update=":bankeditform"
+                                        style="width:30px !important;height:30px !important" />
+                                        &nbsp;&nbsp;
+
+                                        
+
+                                    </p:column>
+                                    <f:facet name="footer">
+                                        <p:commandButton id="createButton" icon="pi pi-plus" oncomplete="PF('profileapprovalDialog').show()"
+                                        styleClass="rounded-button ui-button-info"
+                                        style="width:30px !important;height:30px !important" />
+                                    </f:facet>
+
+
+
+
+                                </p:dataTable>
+
+
+
+                            </div>
+                        </p:card>
+
+                    </div>
+
+
+                </div>
+
+
+            </h:form>
+            <ui:include src="newbankmodal.xhtml" />
+            <ui:include src="bankeditmodal.xhtml" />
+            <ui:include src="bankviewmodal.xhtml"/>
+
+        </ui:define>
+
+    </ui:composition>
+
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
